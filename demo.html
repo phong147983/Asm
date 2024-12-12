@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Container</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: #4CAF50;
+            padding: 10px 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu a:hover {
+            color: #ffcc00;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .product {
+            width: 22%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media screen and (max-width: 768px) {
+            .product {
+                width: 45%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .product {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a onclick="showCategory('nuoc')">Nước</a>
+        <a onclick="showCategory('banh')">Bánh</a>
+        <a onclick="showCategory('keo')">Kẹo</a>
+        <a onclick="showCategory('do-gia-dung')">Đồ gia dụng</a>
+    </div>
+
+    <div class="container" id="productContainer">
+        <!-- Default category products will load here -->
+    </div>
+
+    <script>
+        const products = {
+            nuoc: [
+                { name: 'Nước Suối', description: 'Chai nước suối tinh khiết 500ml.', image: 'https://via.placeholder.com/150' },
+                { name: 'Nước Ép', description: 'Nước ép trái cây tươi.', image: 'https://via.placeholder.com/150' }
+            ],
+            banh: [
+                { name: 'Bánh Quy', description: 'Bánh quy giòn, thơm ngon.', image: 'https://via.placeholder.com/150' },
+                { name: 'Bánh Bông Lan', description: 'Bánh bông lan mềm mịn.', image: 'https://via.placeholder.com/150' }
+            ],
+            keo: [
+                { name: 'Kẹo Dẻo', description: 'Kẹo dẻo hương trái cây.', image: 'https://via.placeholder.com/150' },
+                { name: 'Kẹo Socola', description: 'Kẹo socola đắng.', image: 'https://via.placeholder.com/150' }
+            ],
+            'do-gia-dung': [
+                { name: 'Nồi Cơm Điện', description: 'Nồi cơm điện đa năng 1.8L.', image: 'https://via.placeholder.com/150' },
+                { name: 'Máy Xay Sinh Tố', description: 'Máy xay sinh tố đa năng.', image: 'https://via.placeholder.com/150' }
+            ]
+        };
+
+        function showCategory(category) {
+            const container = document.getElementById('productContainer');
+            container.innerHTML = ''; // Clear existing products
+            if (products[category]) {
+                products[category].forEach(product => {
+                    container.innerHTML += `
+                        <div class="product">
+                            <img src="${product.image}" alt="${product.name}">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        // Show default category
+        showCategory('nuoc');
+    </script>
+</body>
+</html>
