@@ -29,7 +29,7 @@ body {
     display: flex;
     align-items: center;
     position: absolute;
-    right: 35%; /* Đặt thanh tìm kiếm ở bên phải */
+    right: 20%; /* Đặt thanh tìm kiếm ở bên phải */
     width: 500px; /* Kéo dài thanh tìm kiếm */
 }
 /* Định dạng ô nhập liệu */
